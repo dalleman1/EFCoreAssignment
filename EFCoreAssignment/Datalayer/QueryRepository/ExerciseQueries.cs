@@ -32,7 +32,9 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
                                          .ToList();
             foreach (var Exercise in ExerciseList)
             {
-                Console.WriteLine($" ExerciseID: {Exercise.exerciseId}, Lecture: {Exercise.lecture}, Number: {Exercise.number}, StudentId: {Exercise.studentId} \n");
+                Console.WriteLine($" ExerciseID: {Exercise.exerciseId}, " +
+                    $"Lecture: {Exercise.lecture}, Number: {Exercise.number}, " +
+                    $"StudentId: {Exercise.studentId} \n");
             }
             return ExerciseList;
         }
@@ -55,7 +57,9 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
                                          .ToList();
             foreach (var Exercise in ExerciseList)
             {
-                Console.WriteLine($" ExerciseID: {Exercise.exerciseId}, Lecture: {Exercise.lecture}, Number: {Exercise.number}, StudentId: {Exercise.studentId} \n");
+                Console.WriteLine($" ExerciseID: {Exercise.exerciseId}, " +
+                    $"Lecture: {Exercise.lecture}, Number: {Exercise.number}, " +
+                    $"StudentId: {Exercise.studentId} \n");
             }
             return ExerciseList;
         }
