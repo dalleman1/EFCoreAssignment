@@ -26,7 +26,7 @@ namespace EFCoreAssignment.Datalayer.Configurations
         {
             // Static data for testing purposes
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            //modelBuilder.ApplyConfiguration(new configuration);
+            modelBuilder.ApplyConfiguration(new ExerciseConfiguration());
         }
     }
 }

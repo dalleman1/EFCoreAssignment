@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFCoreAssignment.Datalayer.QueryRepository;
+using System;
 
 namespace EFCoreAssignment
 {
@@ -6,7 +7,15 @@ namespace EFCoreAssignment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ExerciseQueries exerciseQueries = new ExerciseQueries();
+
+            exerciseQueries.GetallExercises();
+
+            Console.WriteLine("\n\n\n");
+
+            exerciseQueries.GetExercisesByStudentId(1);
+
+            Console.ReadLine();
         }
     }
 }

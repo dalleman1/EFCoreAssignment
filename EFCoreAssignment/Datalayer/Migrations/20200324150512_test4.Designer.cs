@@ -3,14 +3,16 @@ using EFCoreAssignment.Datalayer.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreAssignment.Migrations
 {
     [DbContext(typeof(OnlinehelpContext))]
-    partial class OnlinehelpContextModelSnapshot : ModelSnapshot
+    [Migration("20200324150512_test4")]
+    partial class test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

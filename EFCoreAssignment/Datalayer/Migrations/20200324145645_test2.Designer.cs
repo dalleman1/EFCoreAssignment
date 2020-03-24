@@ -3,14 +3,16 @@ using EFCoreAssignment.Datalayer.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCoreAssignment.Migrations
 {
     [DbContext(typeof(OnlinehelpContext))]
-    partial class OnlinehelpContextModelSnapshot : ModelSnapshot
+    [Migration("20200324145645_test2")]
+    partial class test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,48 +99,6 @@ namespace EFCoreAssignment.Migrations
                     b.HasKey("exerciseId");
 
                     b.ToTable("exercises");
-
-                    b.HasData(
-                        new
-                        {
-                            exerciseId = 1,
-                            helprequestId = 0,
-                            helpwhere = 0,
-                            lecture = 1,
-                            number = 1,
-                            studentId = 1,
-                            teacherId = 0
-                        },
-                        new
-                        {
-                            exerciseId = 2,
-                            helprequestId = 0,
-                            helpwhere = 0,
-                            lecture = 1,
-                            number = 1,
-                            studentId = 1,
-                            teacherId = 0
-                        },
-                        new
-                        {
-                            exerciseId = 3,
-                            helprequestId = 0,
-                            helpwhere = 0,
-                            lecture = 1,
-                            number = 1,
-                            studentId = 1,
-                            teacherId = 0
-                        },
-                        new
-                        {
-                            exerciseId = 4,
-                            helprequestId = 0,
-                            helpwhere = 0,
-                            lecture = 1,
-                            number = 1,
-                            studentId = 5,
-                            teacherId = 0
-                        });
                 });
 
             modelBuilder.Entity("EFCoreAssignment.Datalayer.Models.HelpRequest", b =>
