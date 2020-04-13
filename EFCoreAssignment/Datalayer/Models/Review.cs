@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCoreAssignment.Datalayer.Models
 {
     public class Review
     {
-        public int reviewId { get; set; }
+        public string auId { get; set; }
         public string Reviewtext { get; set; }
 
         //Assignment
@@ -14,7 +16,6 @@ namespace EFCoreAssignment.Datalayer.Models
         Assignment assignment { get; set; }
 
         //Student
-        public int studentId { get; set; }
         Student student { get; set; }
 
     }

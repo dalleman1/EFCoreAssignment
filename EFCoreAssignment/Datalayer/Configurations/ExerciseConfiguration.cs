@@ -9,10 +9,10 @@ namespace EFCoreAssignment.Datalayer.Configurations
         public void Configure(EntityTypeBuilder<Exercise> entity)
         {
             entity.HasData(
-                new Exercise { exerciseId = 1, lecture = 1, number = 1, studentId = 1 },
-                new Exercise { exerciseId = 2, lecture = 1, number = 1, studentId = 1 },
-                new Exercise { exerciseId = 3, lecture = 1, number = 1, studentId = 1 },
-                new Exercise { exerciseId = 4, lecture = 1, number = 1, studentId = 5 }
+                new Exercise { lecture = 1, number = 1, courseId = 1},
+                new Exercise { lecture = 1, number = 2, courseId = 1},
+                new Exercise { lecture = 4, number = 1, courseId = 2},
+                new Exercise { lecture = 10, number = 6, courseId = 3}
                 );
         }
     }

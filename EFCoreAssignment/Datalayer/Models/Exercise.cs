@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCoreAssignment.Datalayer.Models
 {
     public class Exercise
     {
-        public int exerciseId { get; set; }
-        public int lecture { get; set; } 
+        [Key]
+        public int lecture { get; set; }
+        [Key]
         public int number { get; set; }
-        public int helpwhere { get; set; }
-        //Student
-        public int studentId { get; set; }
-        Student student { get; set; }
 
-        //Teacher
-        public int teacherId { get; set; }
-        Teacher teacher { get; set; }
 
-        //Helprequest
-        public int helprequestId { get; set; }
-        List<HelpRequest> helpRequests { get; set; }
+        [ForeignKey(nameof(TeacherHelpsWithExercise.auId))]
+        TeacherHelpsWithExercise teacherHelpsWithExercise { get; set; }
+
+        //HelprequestExercise
+        [ForeignKey(nameof(HelpRequestExercise.number))]
+        HelpRequestExercise helpRequestExercises { get; set; }
+
+        public int courseId { get; set; }
+        Course course { get; set; }
     }
 }

@@ -15,6 +15,11 @@ namespace EFCoreAssignment.Datalayer.Configurations
         public DbSet<Review> reviews { get; set; }
         public DbSet<Student> students { get; set; }
         public DbSet<Teacher> teachers { get; set; }
+        public DbSet<HelpRequestExercise> helpRequestExercises { get; set; }
+        public DbSet<StudentsInCourse> studentsInCourses { get; set; }
+        public DbSet<TeacherHelpsWith> teacherHelpsWiths { get; set; }
+        public DbSet<TeacherHelpsWithExercise> teacherHelpsWithExercises { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,6 +32,15 @@ namespace EFCoreAssignment.Datalayer.Configurations
             // Static data for testing purposes
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
             modelBuilder.ApplyConfiguration(new ExerciseConfiguration());
+            modelBuilder.ApplyConfiguration(new AssignmentConfiguration());
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
+            modelBuilder.ApplyConfiguration(new HelpRequestConfiguration());
+            modelBuilder.ApplyConfiguration(new HelpRequestExerciseConfiguration());
+            modelBuilder.ApplyConfiguration(new ReviewConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentInCourseConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherHelpsWithConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherHelpsWithExerciseConfiguration());
         }
     }
 }
