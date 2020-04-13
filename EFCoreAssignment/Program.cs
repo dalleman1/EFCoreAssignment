@@ -7,13 +7,16 @@ namespace EFCoreAssignment
     {
         static void Main(string[] args)
         {
-            ExerciseQueries exerciseQueries = new ExerciseQueries();
+            //ExerciseQueries exerciseQueries = new ExerciseQueries();
 
-            exerciseQueries.GetallExercises();
+            //exerciseQueries.GetallExercises();
 
-            Console.WriteLine("\n\n\n");
+            //Console.WriteLine("\n\n\n");
 
-            exerciseQueries.GetExercisesByStudentId(1);
+            //exerciseQueries.GetExercisesByStudentId(1);
+
+            OnlinehelpViews View = new OnlinehelpViews();
+            View.GetHelpRequestExercises("Au616639", 1);
 
             Console.ReadLine();
         }

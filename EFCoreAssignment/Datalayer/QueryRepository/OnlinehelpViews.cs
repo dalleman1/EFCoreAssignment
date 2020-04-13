@@ -15,21 +15,28 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             _context = new OnlinehelpContext();
         }
 
-        public List<HelpRequestExercise> GetHelpRequestExercises(string AUID, int courseID)
+        public void GetHelpRequestExercises(string AUID, int courseID)
         {
-            Teacher teacher = new Teacher();
-            Course course = new Course();
-            List<HelpRequestExercise> HelpRequestExerciseList = _context.helpRequestExercises
-                                                                    .Select(h =>
-                                                                    new HelpRequestExercise
-                                                                    {
-                                                                        auId = h.auId,
-                                                                        helpwhere = h.helpwhere,
-                                                                        number = h.number
-                                                                    })
-                                                                    .ToList();
+            List<Exercise> ListOfExercises = _context.exercises.Where(e => e.courseId == courseID).ToList();
+            List<Teacher> ListOfTeachers = _context.teachers.Where(t => t.AuId == AUID && t.courseId == courseID).ToList();
+            List<HelpRequestExercise> ListOfHelpRequests = _context.helpRequestExercises.Select(h => new HelpRequestExercise { helpwhere = h.helpwhere, auId = h.auId, number = h.number }).ToList();
 
-            return HelpRequestExerciseList;
+            List<List<HelpRequestExercise>> Result = new List<List<HelpRequestExercise>>();
+
+            foreach(var e in ListOfExercises)
+            {
+                Result.Add(ListOfHelpRequests.Where(h => h.number == e.number).ToList());
+            }
+
+            foreach(var list in Result)
+            {
+                foreach(var element in list)
+                {
+                    System.Console.WriteLine($"Student: {element.auId} needs help with exericse {element.number} at: {element.helpwhere}");
+                }
+            }
+
+            return;
         }
 
     }
