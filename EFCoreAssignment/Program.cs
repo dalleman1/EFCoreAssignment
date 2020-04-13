@@ -13,19 +13,19 @@ namespace EFCoreAssignment
             OnlinehelpContext onlinehelpContext = new OnlinehelpContext();
 
             //// Given (teacher, course) print list of all open help request with information where the studentscan be contacted
-            //View.GetHelpRequestExercises("Au616639", 1);
+            View.GetHelpRequestExercises("Au616639", 1);
 
-            //Console.WriteLine("");
+            Console.WriteLine("");
 
             //// Given (student) print list of all students open help requests
-            //View.AllOpenHelpRequest("Au616638");
+            View.AllOpenHelpRequest("Au616638");
 
-            //Console.WriteLine("");  
+            Console.WriteLine("");  
 
             //// Print statistic of all help request per course, so how many requests have been made, how many are open etc
-            //View.PrintAllCourseStatistics();
+            View.PrintAllCourseStatistics();
 
-            //Console.WriteLine("");
+            Console.WriteLine("");
 
 
             TeacherRepository teacher = new TeacherRepository(onlinehelpContext);
@@ -37,28 +37,41 @@ namespace EFCoreAssignment
             StudentRepository student = new StudentRepository(onlinehelpContext);
 
 
-            Assignment a = new Assignment { assignmentId = 5, courseId = 1 };
-            Teacher t = new Teacher { AuId = "Au123213", courseId = 1, Name = "Bjørn BJARNE" };
-            Course c = new Course { Name = "SWT", courseId = 4 };
-            Exercise e = new Exercise { courseId = 2, lecture = 1, number = 1 };
-            Student s = new Student { AuId = "Au629321", Name = "Ronja Røverdatter", Semester = 1 };
-            Review r = new Review { auId = "Au631321", assignmentId = 1, Reviewtext = "Dette er mega godt lavet" };
-            HelpRequest hr = new HelpRequest { assignmentId = 1, auId = "Au612238" };
+            /* @Note:
+             * Below are the data you need to use when creating a new
+             * tuple entry in the database.
+             * 
+             * Assignment a = new Assignment { courseId =  };
+             * Teacher t = new Teacher { AuId = , courseId = , Name = };
+             * Course c = new Course { Name = };
+             * Exercise e = new Exercise { courseId = , lecture =5, number = };
+             * Student s = new Student { AuId = , Name = , Semester = };
+             * Review r = new Review { auId = , assignmentId = 1, Reviewtext =  };
+             * HelpRequest hr = new HelpRequest { assignmentId = , auId =  };
+             * 
+             * @Example:
+             * 
+             * I want to add a new teacher to the database:
+             * 
+             * 1. Create the Teacher
+             * 
+             * Teacher newTeacher = new Teacher { AuId = "au1337", courseId = 3, Name = "Ole Olesen" }
+             * 
+             * 2. Use the TeacherRepository instance to call the AddAsync function
+             * 
+             * teacher.AddAsync(newTeacher).Wait(); // Wait makes sure that the database is updated.
+             * 
+             * 3. Profit.
+             * 
+             * If you want to see the newly added tuple, go to the database in Server Explorer.
+             * 
+            */
 
+            while(true)
+            {
 
-            // Adds a new creation
-            teacher.AddAsync(t).Wait();
-            assignment.AddAsync(a).Wait();
-            course.AddAsync(c).Wait();
-            exercise.AddAsync(e).Wait();
-            helpRequest.AddAsync(hr).Wait();
-            review.AddAsync(r).Wait();
-            student.AddAsync(s).Wait();
+            }
 
-            // Prints again to see a change - Else check the table contents in the server explorer
-            //View.PrintAllCourseStatistics();
-
-            Console.ReadLine();
         }
     }
 }
