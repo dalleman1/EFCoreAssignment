@@ -16,7 +16,8 @@ namespace EFCoreAssignment
             //exerciseQueries.GetExercisesByStudentId(1);
 
             OnlinehelpViews View = new OnlinehelpViews();
-            View.GetHelpRequestExercises("Au616639", 1);
+            //View.GetHelpRequestExercises("Au616639", 1);
+            View.AllOpenHelpRequest("Au616638");
 
             Console.ReadLine();
         }

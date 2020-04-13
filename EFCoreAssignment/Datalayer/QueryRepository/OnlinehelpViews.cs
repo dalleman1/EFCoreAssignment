@@ -39,5 +39,27 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             return;
         }
 
+        public void AllOpenHelpRequest(string AUID)
+        {
+            List<HelpRequestExercise> helpRequestsExerciseList = _context.helpRequestExercises.Where(h => h.auId == AUID).ToList();
+            List<HelpRequest> helpRequestsList = _context.helprequests.Where(h => h.auId == AUID).ToList();
+
+            System.Console.WriteLine($"{AUID}, needs help with the following exercises: \n");
+            
+            foreach(var element in helpRequestsExerciseList)
+            {
+                System.Console.WriteLine($"Exercise number: {element.number} \n Where: {element.helpwhere} \n \n");
+            }
+
+            System.Console.WriteLine("And the following exercises: \n");
+
+            foreach(var element in helpRequestsList)
+            {
+                System.Console.WriteLine($"Assignment number: {element.assignmentId}");
+            }
+
+            return;
+        }
+
     }
 }
