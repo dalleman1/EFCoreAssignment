@@ -8,13 +8,13 @@ namespace EFCoreAssignment.Migrations
         {
             migrationBuilder.InsertData(
                 table: "exercises",
-                columns: new[] { "exerciseId", "helprequestId", "helpwhere", "lecture", "number", "studentId", "teacherId" },
+                columns: new[] { "number", "lecture", "courseId" },
                 values: new object[,]
                 {
-                    { 1, 0, 0, 1, 1, 2, 0 },
-                    { 2, 0, 0, 1, 1, 3, 0 },
-                    { 3, 0, 0, 1, 1, 1, 0 },
-                    { 4, 0, 0, 1, 1, 5, 0 }
+                    { 1, 1, 1 },
+                    { 2, 1, 1 },
+                    { 1, 4, 2 },
+                    { 6, 10, 3 }
                 });
         }
 
@@ -22,23 +22,23 @@ namespace EFCoreAssignment.Migrations
         {
             migrationBuilder.DeleteData(
                 table: "exercises",
-                keyColumn: "exerciseId",
-                keyValue: 1);
+                keyColumns: new[] { "number", "lecture" },
+                keyValues: new object[] { 1, 1 });
 
             migrationBuilder.DeleteData(
                 table: "exercises",
-                keyColumn: "exerciseId",
-                keyValue: 2);
+                keyColumns: new[] { "number", "lecture" },
+                keyValues: new object[] { 1, 4 });
 
             migrationBuilder.DeleteData(
                 table: "exercises",
-                keyColumn: "exerciseId",
-                keyValue: 3);
+                keyColumns: new[] { "number", "lecture" },
+                keyValues: new object[] { 2, 1 });
 
             migrationBuilder.DeleteData(
                 table: "exercises",
-                keyColumn: "exerciseId",
-                keyValue: 4);
+                keyColumns: new[] { "number", "lecture" },
+                keyValues: new object[] { 6, 10 });
         }
     }
 }

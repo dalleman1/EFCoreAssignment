@@ -23,14 +23,14 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
 
             List<List<HelpRequestExercise>> Result = new List<List<HelpRequestExercise>>();
 
-            foreach(var e in ListOfExercises)
+            foreach (var e in ListOfExercises)
             {
                 Result.Add(ListOfHelpRequests.Where(h => h.number == e.number).ToList());
             }
 
-            foreach(var list in Result)
+            foreach (var list in Result)
             {
-                foreach(var element in list)
+                foreach (var element in list)
                 {
                     System.Console.WriteLine($"Student: {element.auId} needs help with exericse {element.number} at: {element.helpwhere}");
                 }

@@ -8,7 +8,7 @@ namespace EFCoreAssignment.Datalayer.Models
     {
         public string auId { get; set; }
         Teacher teacher { get; set; }
-        public int Number { get; set; }
+        public int number { get; set; }
         Exercise exercise { get; set; }
     }
 }

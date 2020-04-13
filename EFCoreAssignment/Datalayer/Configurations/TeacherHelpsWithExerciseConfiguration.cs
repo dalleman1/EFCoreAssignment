@@ -12,10 +12,10 @@ namespace EFCoreAssignment.Datalayer.Configurations
         public void Configure(EntityTypeBuilder<TeacherHelpsWithExercise> entity)
         {
             entity.HasData(
-                new TeacherHelpsWithExercise { auId = "Au420322", Number = 1},
-                new TeacherHelpsWithExercise { auId = "Au616639", Number = 2 },
-                new TeacherHelpsWithExercise { auId = "Au420322", Number = 1 },
-                new TeacherHelpsWithExercise { auId = "Au620433", Number = 6 }
+                new TeacherHelpsWithExercise { auId = "Au420322", number = 1},
+                new TeacherHelpsWithExercise { auId = "Au616639", number = 2 },
+                new TeacherHelpsWithExercise { auId = "Au420322", number = 2 },
+                new TeacherHelpsWithExercise { auId = "Au620433", number = 6 }
                 );
         }
     }

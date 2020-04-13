@@ -8,9 +8,8 @@ namespace EFCoreAssignment.Datalayer.Models
 {
     public class Exercise
     {
-        [Key]
+        //Composite key set in modelcreating
         public int lecture { get; set; }
-        [Key]
         public int number { get; set; }
 
 

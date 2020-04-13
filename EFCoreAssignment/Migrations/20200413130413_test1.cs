@@ -12,11 +12,7 @@ namespace EFCoreAssignment.Migrations
                 {
                     assignmentId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    reviewId = table.Column<int>(nullable: false),
-                    studentId = table.Column<int>(nullable: false),
-                    courseId = table.Column<int>(nullable: false),
-                    teacherId = table.Column<int>(nullable: false),
-                    helprequestId = table.Column<int>(nullable: false)
+                    courseId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,10 +25,7 @@ namespace EFCoreAssignment.Migrations
                 {
                     courseId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    teacherId = table.Column<int>(nullable: false),
-                    studentId = table.Column<int>(nullable: false),
-                    assignmentId = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,89 +36,108 @@ namespace EFCoreAssignment.Migrations
                 name: "exercises",
                 columns: table => new
                 {
-                    exerciseId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     lecture = table.Column<int>(nullable: false),
                     number = table.Column<int>(nullable: false),
-                    helpwhere = table.Column<int>(nullable: false),
-                    studentId = table.Column<int>(nullable: false),
-                    teacherId = table.Column<int>(nullable: false),
-                    helprequestId = table.Column<int>(nullable: false)
+                    courseId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_exercises", x => x.exerciseId);
+                    table.PrimaryKey("PK_exercises", x => new { x.number, x.lecture });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "helpRequestExercises",
+                columns: table => new
+                {
+                    auId = table.Column<string>(nullable: true),
+                    helpwhere = table.Column<string>(nullable: true),
+                    number = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
                 name: "helprequests",
                 columns: table => new
                 {
-                    helprequestId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    studentId = table.Column<int>(nullable: false),
-                    assignmentId = table.Column<int>(nullable: false),
-                    exerciseId = table.Column<int>(nullable: false)
+                    auId = table.Column<string>(nullable: true),
+                    assignmentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_helprequests", x => x.helprequestId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "reviews",
                 columns: table => new
                 {
-                    reviewId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    auId = table.Column<string>(nullable: true),
                     Reviewtext = table.Column<string>(nullable: true),
-                    assignmentId = table.Column<int>(nullable: false),
-                    studentId = table.Column<int>(nullable: false)
+                    assignmentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_reviews", x => x.reviewId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "students",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AuId = table.Column<string>(nullable: true),
+                    AuId = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    exerciseId = table.Column<int>(nullable: false),
-                    assignmentId = table.Column<int>(nullable: false),
-                    courseId = table.Column<int>(nullable: false),
-                    reviewId = table.Column<int>(nullable: false)
+                    Semester = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students", x => x.StudentId);
+                    table.PrimaryKey("PK_students", x => x.AuId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "studentsInCourses",
+                columns: table => new
+                {
+                    auId = table.Column<string>(nullable: true),
+                    courseId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
+                name: "teacherHelpsWithExercises",
+                columns: table => new
+                {
+                    auId = table.Column<string>(nullable: true),
+                    Number = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
+                name: "teacherHelpsWiths",
+                columns: table => new
+                {
+                    auId = table.Column<string>(nullable: true),
+                    assignmentId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
                 name: "teachers",
                 columns: table => new
                 {
-                    teacherId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AuId = table.Column<string>(nullable: true),
+                    AuId = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    exerciseId = table.Column<int>(nullable: false),
-                    assignmentId = table.Column<int>(nullable: false),
                     courseId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_teachers", x => x.teacherId);
+                    table.PrimaryKey("PK_teachers", x => x.AuId);
                 });
-
-            migrationBuilder.InsertData(
-                table: "students",
-                columns: new[] { "StudentId", "AuId", "Name", "assignmentId", "courseId", "exerciseId", "reviewId" },
-                values: new object[] { 1, "au616639", "Morten Dalsgaard", 0, 0, 0, 0 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -140,6 +152,9 @@ namespace EFCoreAssignment.Migrations
                 name: "exercises");
 
             migrationBuilder.DropTable(
+                name: "helpRequestExercises");
+
+            migrationBuilder.DropTable(
                 name: "helprequests");
 
             migrationBuilder.DropTable(
@@ -147,6 +162,15 @@ namespace EFCoreAssignment.Migrations
 
             migrationBuilder.DropTable(
                 name: "students");
+
+            migrationBuilder.DropTable(
+                name: "studentsInCourses");
+
+            migrationBuilder.DropTable(
+                name: "teacherHelpsWithExercises");
+
+            migrationBuilder.DropTable(
+                name: "teacherHelpsWiths");
 
             migrationBuilder.DropTable(
                 name: "teachers");
