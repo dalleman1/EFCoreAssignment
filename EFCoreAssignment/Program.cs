@@ -20,8 +20,9 @@ namespace EFCoreAssignment
 
             TeacherRepository teacher = new TeacherRepository(onlinehelpContext);
 
-            teacher.AddAsync(new Teacher{ AuId = "Au326539", Name = "Bob kajsen", courseId = 1 }).Wait();
-
+            Teacher t = new Teacher { AuId = "Au12323", courseId = 1, Name = "Bjørn" };
+            teacher.AddAsync(t).Wait();
+            
 
 
             Console.ReadLine();
