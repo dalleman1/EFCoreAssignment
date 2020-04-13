@@ -27,7 +27,6 @@ namespace EFCoreAssignment
 
             Console.WriteLine("");
 
-
             TeacherRepository teacher = new TeacherRepository(onlinehelpContext);
             AssignmentRepository assignment = new AssignmentRepository(onlinehelpContext);
             CourseRepository course = new CourseRepository(onlinehelpContext);
@@ -36,7 +35,6 @@ namespace EFCoreAssignment
             ReviewRepository review = new ReviewRepository(onlinehelpContext);
             StudentRepository student = new StudentRepository(onlinehelpContext);
 
-
             /* @Note:
              * Below are the data you need to use when creating a new
              * tuple entry in the database.
@@ -44,9 +42,9 @@ namespace EFCoreAssignment
              * Assignment a = new Assignment { courseId =  };
              * Teacher t = new Teacher { AuId = , courseId = , Name = };
              * Course c = new Course { Name = };
-             * Exercise e = new Exercise { courseId = , lecture =5, number = };
+             * Exercise e = new Exercise { courseId = , lecture = , number = };
              * Student s = new Student { AuId = , Name = , Semester = };
-             * Review r = new Review { auId = , assignmentId = 1, Reviewtext =  };
+             * Review r = new Review { auId = , assignmentId = , Reviewtext =  };
              * HelpRequest hr = new HelpRequest { assignmentId = , auId =  };
              * 
              * @Example:
