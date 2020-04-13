@@ -61,7 +61,7 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             return;
         }
 
-        public void PrintAllStatistics()
+        public void PrintAllCourseStatistics()
         {
             List<int> CourseIDs = _context.courses.Select(c => c.courseId).ToList();
             

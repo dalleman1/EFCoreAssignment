@@ -1,4 +1,6 @@
-﻿using EFCoreAssignment.Datalayer.QueryRepository;
+﻿using EFCoreAssignment.Datalayer.Configurations;
+using EFCoreAssignment.Datalayer.Models;
+using EFCoreAssignment.Datalayer.QueryRepository;
 using System;
 
 namespace EFCoreAssignment
@@ -7,18 +9,20 @@ namespace EFCoreAssignment
     {
         static void Main(string[] args)
         {
-            //ExerciseQueries exerciseQueries = new ExerciseQueries();
-
-            //exerciseQueries.GetallExercises();
-
-            //Console.WriteLine("\n\n\n");
-
-            //exerciseQueries.GetExercisesByStudentId(1);
-
             OnlinehelpViews View = new OnlinehelpViews();
+            OnlinehelpContext onlinehelpContext = new OnlinehelpContext();
+            
             //View.GetHelpRequestExercises("Au616639", 1);
+
             //View.AllOpenHelpRequest("Au616638");
-            View.PrintAllStatistics();
+
+            //View.PrintAllCourseStatistics();
+
+            TeacherRepository teacher = new TeacherRepository(onlinehelpContext);
+
+            teacher.AddAsync(new Teacher{ AuId = "Au326539", Name = "Bob kajsen", courseId = 1 }).Wait();
+
+
 
             Console.ReadLine();
         }
