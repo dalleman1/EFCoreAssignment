@@ -22,7 +22,7 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             try
             {
                 _context.Add(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch(AggregateException e)
             {
