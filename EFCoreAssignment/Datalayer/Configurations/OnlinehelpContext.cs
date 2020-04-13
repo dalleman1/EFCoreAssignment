@@ -24,7 +24,7 @@ namespace EFCoreAssignment.Datalayer.Configurations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EfcoreAssignment;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True");
             optionsBuilder.EnableSensitiveDataLogging(true);
         }
 

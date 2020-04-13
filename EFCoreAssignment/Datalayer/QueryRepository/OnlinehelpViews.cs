@@ -48,10 +48,10 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             
             foreach(var element in helpRequestsExerciseList)
             {
-                System.Console.WriteLine($"Exercise number: {element.number} \n Where: {element.helpwhere} \n \n");
+                System.Console.WriteLine($"Exercise number: {element.number}\nWhere: {element.helpwhere} \n");
             }
 
-            System.Console.WriteLine("And the following exercises: \n");
+            System.Console.WriteLine("And the following assignments: \n");
 
             foreach(var element in helpRequestsList)
             {
@@ -61,5 +61,26 @@ namespace EFCoreAssignment.Datalayer.QueryRepository
             return;
         }
 
+        public void PrintAllStatistics()
+        {
+            List<int> CourseIDs = _context.courses.Select(c => c.courseId).ToList();
+            
+            foreach(var id in CourseIDs)
+            {
+                var temp = _context.exercises.Where(e => e.courseId == id).ToList();
+                int count = 0;
+                
+                foreach (var e in temp)
+                {
+                    var list = _context.helpRequestExercises.Where(d => d.number == e.number).ToList();
+
+                    count = count + list.Count;
+                }
+
+                System.Console.WriteLine($"Amount of help requests in exercises for couseId: {id}: {count}");
+            }
+         
+            return;
+        }
     }
 }
