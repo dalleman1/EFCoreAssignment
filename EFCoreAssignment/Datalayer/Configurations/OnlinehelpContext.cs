@@ -24,7 +24,8 @@ namespace EFCoreAssignment.Datalayer.Configurations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\mongl\\source\\repos\\EFCoreAssignment\\EFCoreAssignment\\Assignment2.mdf;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EfcoreAssignment;Integrated Security=True");
+            optionsBuilder.EnableSensitiveDataLogging(true);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,6 +42,17 @@ namespace EFCoreAssignment.Datalayer.Configurations
             modelBuilder.ApplyConfiguration(new TeacherConfiguration());
             modelBuilder.ApplyConfiguration(new TeacherHelpsWithConfiguration());
             modelBuilder.ApplyConfiguration(new TeacherHelpsWithExerciseConfiguration());
+         
+            //Composite key for Exercises
+            modelBuilder.Entity<Exercise>().HasKey(table => new { table.number, table.lecture });
+
+            modelBuilder.Entity<HelpRequest>().HasKey(h => new { h.auId, h.assignmentId });
+            modelBuilder.Entity<HelpRequestExercise>().HasKey(h => new { h.auId, h.number });
+            modelBuilder.Entity<Review>().HasKey(h => new { h.auId, h.assignmentId });
+            modelBuilder.Entity<StudentsInCourse>().HasKey(h => new { h.auId, h.courseId });
+            modelBuilder.Entity<TeacherHelpsWith>().HasKey(h => new { h.auId, h.assignmentId });
+            modelBuilder.Entity<TeacherHelpsWithExercise>().HasKey(h => new { h.auId, h.number });
+
         }
     }
 }

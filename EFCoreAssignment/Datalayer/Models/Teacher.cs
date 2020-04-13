@@ -13,7 +13,7 @@ namespace EFCoreAssignment.Datalayer.Models
         public string Name { get; set; }
 
         // Exercise
-        [ForeignKey(nameof(TeacherHelpsWithExercise.Number))]
+        [ForeignKey(nameof(TeacherHelpsWithExercise.number))]
         List<TeacherHelpsWithExercise> teacherHelpsWithExercises { get; set; }
 
 
